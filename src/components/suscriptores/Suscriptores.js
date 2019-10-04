@@ -4,8 +4,16 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/spinner';
+import PropTypes from 'prop-types';
 class Suscriptores extends Component {
     state = {  }
+    eliminarSuscriptor = (suscriptorId) => {
+        const { firestore } = this.props;
+        firestore.delete({
+            collection: 'suscriptores',
+            doc: suscriptorId
+        });
+    };
     render() { 
         const suscriptores = this.props.suscriptores;
         if(!suscriptores) return <Spinner />;
@@ -47,6 +55,14 @@ class Suscriptores extends Component {
                                             Más Información
                                         </i>
                                     </Link>
+                                    <button
+                                        type="button"
+                                        className="btn btn-danger btn-block"
+                                        onClick = {() => this.eliminarSuscriptor(suscriptor.id)}
+                                    >
+                                        <i className="fas fa-trash-alt"></i>{' '}
+                                        Eliminar
+                                    </button>
                                 </td>
                             </tr>
                         ))}
@@ -56,7 +72,12 @@ class Suscriptores extends Component {
         );
     }
 }
- 
+
+Suscriptores.protoTypes = {
+    firestore: PropTypes.object.isRequired,
+    Suscriptores: PropTypes.array
+}
+
 export default compose(
     firestoreConnect([{collection: 'suscriptores'}]),
     connect((state,props) => {
