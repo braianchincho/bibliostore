@@ -19,7 +19,7 @@ class MostrarSuscriptor extends Component {
                     </Link>
                 </div>
                 <div className="col-md-2">
-                    <Link to={'/suscriptores'} className="btn btn-primary float-rigth">
+                    <Link to={`/suscriptores/editar/${suscriptor.id}`} className="btn btn-primary float-rigth">
                         <i className="fas fa-arrow-circle-rigth"></i>{' '}
                         Editar Suscriptor
                     </Link>
