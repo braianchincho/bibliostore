@@ -45,7 +45,6 @@ class EditarSuscriptor extends Component {
         if(!suscriptor) return <Spinner/>
         return ( 
              <div className="row">
-                 <h1>{suscriptor.nombre}</h1>
                 <div className="col-12 mb-4">
                     <Link to={'/suscriptores'} className="btn btn-secondary">
                         <i className="fas fa-arrow-circle-left"></i>{' '}
