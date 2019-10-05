@@ -12,6 +12,7 @@ import NuevoLibro from './components/libros/NuevoLibro';
 import MostrarLibro from './components/libros/MostrarLibro';
 import EditarLibro from './components/libros/EditarLibro';
 import PrestamoLibro from './components/libros/PrestamoLibro';
+import Login from './components/auth/login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <NavBar />
           <div className="container">
             <Switch>
+              <Route exact path="/login" component={Login}/>
               <Route exact path="/" component={Libros}/>
               <Route exact path="/libros/mostrar/:id" component={MostrarLibro}/>
               <Route exact path="/libros/nuevo" component={NuevoLibro}/>
