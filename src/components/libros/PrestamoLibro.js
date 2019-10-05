@@ -22,7 +22,6 @@ class PrestamoLibro extends Component {
     }
     buscarAlumno = e => {
         e.preventDefault();
-        debugger
         const { busqueda } = this.state;
         const { firestore } = this.props;
 
@@ -146,7 +145,8 @@ export default compose(
             doc: props.match.params.id
         }
     ]),
-    connect(({firestore: {ordered}},props) => ({
-        libro: ordered.libro && ordered.libro[0]
+    connect(({firestore: {ordered},usuario},props) => ({
+        libro: ordered.libro && ordered.libro[0],
+        usuario: usuario
     }))
 )(PrestamoLibro);
